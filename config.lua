@@ -3,6 +3,8 @@ Config = {}
 
 Config.GroupName = 'werewolf'
 Config.NotificationTitle = 'Moonlight'
+Config.NightMessage = 'You feel stronger with the moonlight'
+Config.DayMessage = 'Your blood calms down and your feral strenght is gone'
 
 Config.Potions = {
    ----------------------------------------
