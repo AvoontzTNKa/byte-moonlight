@@ -2,20 +2,23 @@ local Core = exports.vorp_core:GetCore()
 local inForm = false
 
 
-function HealPlayer()
+function HealPlayer() -- heals player 
     SetEntityMaxHealth(PlayerPedId(), 600)
     SetEntityHealth(PlayerPedId(), 600)
 end
 
 RegisterNetEvent('byte:werewolf_form')
-AddEventHandler('byte:werewolf_form', function(model, scale)
+AddEventHandler('byte:werewolf_form', function(model, scale,outfit)
     local SelectedModel = model
 
     SetMonModel(model)
     inForm = true
+    Citizen.InvokeNative(0x77FF8D35EEC6BBC4,PlayerPedId(),outfit,0)
     Citizen.CreateThread(function()
         SpawnFX()
         while inForm do
+            local ped = PlayerPedId()
+    
             Citizen.Wait(0)
            SetPedScale(PlayerPedId(), scale)
             if IsPedDeadOrDying(PlayerPedId()) then
@@ -31,8 +34,9 @@ AddEventHandler('byte:werewolf_form', function(model, scale)
         while true do
             Citizen.Wait(0)
             local playerModel = GetEntityModel(PlayerPedId())
-            if (playerModel == GetHashKey('mp_male') or playerModel == GetHashKey('mp_female') or playerModel ~= GetHashKey(model) ) and inForm then
+            if (playerModel == GetHashKey('mp_male') or playerModel == GetHashKey('mp_female') or playerModel ~= GetHashKey(model)) and inForm then
                 inForm = false
+                print("ISNT RIGHT")
                 break
             end
         end
@@ -43,7 +47,7 @@ end)
 
 
 
-Citizen.CreateThread(function() -- Activates Passive effects on vampires // Super Strength, Night Vision,
+Citizen.CreateThread(function() -- Activates Passive effects on werewolf // Super Strength, Night Vision,
     local Notified = false
     local NotifiedOff = true
    
@@ -55,7 +59,7 @@ Citizen.CreateThread(function() -- Activates Passive effects on vampires // Supe
                    local Group = LocalPlayer.state.Character.Group
                    local Player = PlayerId()
                    local Hours = GetClockHours()
-                   if Group == 'werewolf' then
+                   if Group == Config.GroupName then
                        if Hours >= 20 or Hours < 6 then                                                      -- enables vision at night
                            Citizen.InvokeNative(0xA63FCAD3A6FEC6D2, PlayerId(), true)                        -- Eagle Eye: True
                            Citizen.InvokeNative(0x7146CF430965927C, 'PERSONA_CONT_EAGLEEYE_ON_SPRINT', true) -- Eagle Eye Run
@@ -88,12 +92,6 @@ Citizen.CreateThread(function() -- Activates Passive effects on vampires // Supe
 
     end
 end)
-
-
-
-
-
-
 
 function SpawnFX(dict, name)
     local Player = PlayerId()
@@ -162,6 +160,9 @@ function SetMonModel(name)
         Citizen.InvokeNative(0xED40380076A31506, player, model, false) -- SetPlayerModel
         Citizen.InvokeNative(0x283978A15512B2FE, PlayerPedId(), false)  -- SetRandomOutfitVariation
         SetModelAsNoLongerNeeded(model)
+
+
+
         HealPlayer()
     end
 end
