@@ -6,13 +6,6 @@ byte-moonlight is a simple script that adds configurable transformation potions 
 
 Warning: Player/Character needs to have the group "werewolf" to work, you can change that on config file
 
-# Features 🌙:
-
-- Passive Effects (Super Strenght and Eagle Eye only on night)
-- Easy potions creation (need to create item in database)
-- Easy ped size change
-- Change model pelt/outfit
-
 # Portugues: 
 
 byte-moonlight é um script simples que adiciona poções de transformação configuráveis ​​para roleplay sobrenatural em seu servidor, esta é uma versão gratuita e menos avançada que a versão paga.
@@ -21,9 +14,10 @@ Atenção: O jogador/personagem precisa ter o grupo "werewolf" para funcionar, v
 
 # Features 🌙:
 
-- Efeitos Passivos (Super Força e Olho de Águia somente à noite)
-- Fácil criação de poções (é necessário criar item no banco de dados)
-- Fácil mudança de tamanho do ped
-- Alterar modelo de pelagem/roupa dos models
+- Passive Effects (Super Strenght and Eagle Eye only on night)
+- Easy potions creation (need to create item in database)
+- Easy ped size change
+- Change model pelt/outfit
+
 
 
