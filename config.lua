@@ -2,6 +2,7 @@ Config = {}
 
 
 Config.GroupName = 'werewolf'
+Config.NotificationTitle = 'Moonlight'
 
 Config.Potions = {
    ----------------------------------------
