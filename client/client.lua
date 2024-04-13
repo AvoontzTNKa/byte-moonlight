@@ -78,7 +78,7 @@ Citizen.CreateThread(function() -- Activates Passive effects on werewolf // Supe
                            Notified = false
    
                            if not NotifiedOff then
-                               Core.NotifyLeftRank("Maldição da Lua", "A luz do sol acalma seu sangue e você se sente menos agitado",
+                               Core.NotifyLeftRank(Config.NotificationTitle, "A luz do sol acalma seu sangue e você se sente menos agitado",
                                    "inventory_items_mp",
                                    "mp_animal_wolf_legendary_02", 4000, "COLOR_PURE_WHITE")
                                NotifiedOff = true
