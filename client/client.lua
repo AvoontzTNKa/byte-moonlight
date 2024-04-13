@@ -66,7 +66,7 @@ Citizen.CreateThread(function() -- Activates Passive effects on werewolf // Supe
                            Citizen.InvokeNative(0xE4CB5A3F18170381, PlayerId(), 2000.0)                      -- SetPlayerMeleeWeaponDamageModifier
    
                            if not Notified then                                                              -- Verifies werewolf on notification
-                               Core.NotifyLeftRank(Config.NotificationTitle, "Seu sangue está fervendo durante a noite",
+                               Core.NotifyLeftRank(Config.NotificationTitle, Config.NightMessage,
                                    "inventory_items_mp",
                                    "mp_animal_wolf_legendary_02", 4000, "COLOR_YELLOW")
                                Notified = true
@@ -78,7 +78,7 @@ Citizen.CreateThread(function() -- Activates Passive effects on werewolf // Supe
                            Notified = false
    
                            if not NotifiedOff then
-                               Core.NotifyLeftRank(Config.NotificationTitle, "A luz do sol acalma seu sangue e você se sente menos agitado",
+                               Core.NotifyLeftRank(Config.NotificationTitle, Config.DayMessage,
                                    "inventory_items_mp",
                                    "mp_animal_wolf_legendary_02", 4000, "COLOR_PURE_WHITE")
                                NotifiedOff = true
